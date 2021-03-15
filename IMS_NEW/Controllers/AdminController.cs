@@ -80,6 +80,7 @@ namespace IMS_NEW.Controllers
 
 
         [HttpGet]
+        [ActionName("Login_Wth_Session")]
         public ActionResult Login()
         {
             return View();
