@@ -1,0 +1,117 @@
+﻿@model IEnumerable<IMS_NEW.Models.tbl_AssetUserMaping>
+
+@{
+    ViewBag.Title = "AssetTransactionList";
+}
+<div style="background-color:aliceblue">
+    &nbsp;&nbsp;&nbsp;
+    <b>USER_NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp;@Session["UserName"]
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("LOGOUT", "LogOut", "Admin")
+    <br />
+    &nbsp;&nbsp;&nbsp;
+</div>
+<div style="background-color:aquamarine">
+    <h2 style="margin:auto; padding:12px 20px;">Asset Transaction List</h2>
+</div>
+<br />
+<table id="jqdatatable" class="table table-bordered table-condensed tabble-hover table-striped" style="background-color:aliceblue; padding:12px 20px; ">
+    &nbsp;&nbsp;&nbsp;
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetsCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Emailid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLocationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransferDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetLocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssetsCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssetId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emailid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLocationid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransferDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssetLocationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedOn)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EdtForAsTranscationList", new { AssetUserMapplingid = item.AssetUserMapplingid }, new { @class = "btn btn-primary" })
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @*@Html.ActionLink("Details", "Details", new { id=item.AssetUserMapplingid }) |*@
+                    @Html.ActionLink("Delete", "DLTForAsTranscationList", new { AssetUserMapplingid = item.AssetUserMapplingid }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+        &nbsp;&nbsp;&nbsp;
+    </tbody>
+
+</table>

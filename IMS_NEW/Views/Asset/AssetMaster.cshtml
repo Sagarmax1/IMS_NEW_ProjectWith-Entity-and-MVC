@@ -1,0 +1,176 @@
+﻿@model IMS_NEW.Models.tbl_AssetMaster
+
+@{
+    ViewBag.Title = "AssetMaster";
+}
+
+<div style="background-color:aliceblue">
+    &nbsp;&nbsp;&nbsp;
+    <b>USER_NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp;@Session["UserName"]
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("LOGOUT", "LogOut", "Admin")
+    <br />
+    &nbsp;&nbsp;&nbsp;
+</div>
+
+<div style="background-color:aquamarine">
+    <h2 style="margin:auto; padding:12px 20px;">AssetMaster</h2>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div style="background-color:aqua; padding:12px 20px; " class="form-horizontal">
+
+
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+                @Html.LabelFor(model => model.AssetTypeId, "AssetTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model =>model.AssetTypeId,ViewBag.AssetTypeId as SelectList,"Select", new { AssetTypeId = "asset" })
+
+                    @Html.ValidationMessageFor(model => model.AssetTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AssetTypeId, "AssetTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model =>model.AssetTypeId,new SelectList (new List<object> {
+                   new { value = 0, text="Select"},
+                   new { value = 1, text="Computer"},
+                   new { value = 2, text="Keyboard"},
+                    new { value = 3, text="Mouse"},
+                     new { value = 4, text="Printer"}
+               },
+                   "value","text",0), htmlAttributes: new { @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.AssetId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model =>model.LocationId, new SelectList (new List<object> {
+                   new { value = 0, text="Select"},
+                   new { value = 1, text="GURGAON"},
+                   new { value = 2, text="DELHI"},
+                    new { value = 3, text="NOIDA"},
+                     new { value = 4, text="PUNJAB"},
+                      new { value = 5, text="JAIPUR"}
+               },
+                   "value","text",0), htmlAttributes: new { @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.AssetsCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AssetsCode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AssetsCode, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ram, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ram, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ram, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PurchaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PurchaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PurchaseDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WarrantyStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WarrantyStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WarrantyStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WindowKey, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WindowKey, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WindowKey, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CREATE" class="btn btn-primary" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="RESET" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+           window.onload = function ()
+           {
+               alert("@ViewBag.Message");
+           };
+
+
+    </script>
+}
+
+
+@*<div style="background-color:azure">
+       @Html.ActionLink(" Asset Details", "AssetMasterList")
+    </div>*@

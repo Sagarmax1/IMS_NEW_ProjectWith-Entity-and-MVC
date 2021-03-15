@@ -1,0 +1,125 @@
+﻿@model IEnumerable<IMS_NEW.Models.tbl_AssetMaster>
+
+@{
+    ViewBag.Title = "AssetMasterList";
+}
+
+<div style="background-color:aliceblue">
+    &nbsp;&nbsp;&nbsp;
+    <b>USER_NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp;@Session["UserName"]
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("LOGOUT", "LogOut", "Admin")
+    <br />
+    &nbsp;&nbsp;&nbsp;
+</div>
+<div style="background-color:aquamarine">
+    <h2 style="margin:auto; padding:12px 20px;">Asset Detail</h2>
+</div>
+<br />
+@Html.Raw(TempData["UpdateMesage"])
+
+@Html.Raw(TempData["DeleteMesage"])
+
+<table id="jqdatatable" class="table table-bordered table-condensed tabble-hover table-striped" style="background-color:aliceblue; padding:12px 20px; ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WarrantyStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WindowKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_AssetType.AssetTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_LocationMaster.LocationName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ram)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WarrantyStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WindowKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_AssetType.AssetTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_LocationMaster.LocationName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { AssetId = item.AssetId }, new { @class = "btn btn-primary" })
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @*@Html.ActionLink("Details", "Details", new { id = item.AssetId }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { AssetId = item.AssetId }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

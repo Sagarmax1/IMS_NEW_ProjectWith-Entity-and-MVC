@@ -1,0 +1,164 @@
+﻿@model IMS_NEW.Models.tbl_AssetUserMaping
+
+@{
+    ViewBag.Title = "AssetTransaction";
+}
+<div style="background-color:aliceblue">
+    &nbsp;&nbsp;&nbsp;
+    <b>USER_NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp;@Session["UserName"]
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("LOGOUT", "LogOut", "Admin")
+    <br />
+    &nbsp;&nbsp;&nbsp;
+</div>
+<div style="background-color:azure">
+    <h2 style="margin:auto; padding:12px 20px;">AssetTransaction</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div style="background-color:aqua; padding:12px 20px; " class="form-horizontal">
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.AssetId, "AssetId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AssetId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssetId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetsCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetsCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssetsCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetId, "AssetId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model =>model.AssetId,new SelectList (new List<object> {
+           new { value = 0, text="Select"},
+               new { value = 1, text="Computer"},
+               new { value = 2, text="Keyboard"},
+                new { value = 3, text="Mouse"},
+                 new { value = 4, text="Printer"}
+
+       },
+           "value","text",0), htmlAttributes: new { @class = "form-control" })
+
+
+
+            @Html.ValidationMessageFor(model => model.AssetId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserLocationid, "UserLocationid", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model =>model.UserLocationid, new SelectList (new List<object> {
+               new { value = 0, text="Select"},
+               new { value = 1, text="GURGAON"},
+               new { value = 2, text="DELHI"},
+                new { value = 3, text="NOIDA"},
+                 new { value = 4, text="PUNJAB"},
+                  new { value = 5, text="JAIPUR"}
+           },
+               "value","text",0), htmlAttributes: new { @class = "form-control" })
+
+
+            @Html.ValidationMessageFor(model => model.UserLocationid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Emailid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Emailid, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Emailid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.UserLocationid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserLocationid, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserLocationid, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssignDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssignDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssignDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TransferDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TransferDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TransferDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetLocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetLocationId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssetLocationId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset" value="RESET" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+           window.onload = function ()
+           {
+               alert("@ViewBag.Message");
+           };
+
+
+    </script>
+}
+
+
+@*<div>
+        @Html.ActionLink("AssetTrascation List", "AssetTransactionList")
+    </div>*@

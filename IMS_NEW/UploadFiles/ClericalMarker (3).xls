@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">ClericalName</th><th scope="col">ClericalMarkerNo</th><th scope="col">ClearicalAddress</th><th scope="col">MobileNo</th><th scope="col">EmailID</th><th scope="col">FileNo</th><th scope="col">DOB</th><th scope="col">CertificationDate</th><th scope="col">ApplicationForm</th><th scope="col">CMNotificationForm</th><th scope="col">Reference2</th><th scope="col">CU_COP</th><th scope="col">UKVIPack</th><th scope="col">IDAddProof</th><th scope="col">Miscellaneous</th>
+		</tr><tr>
+			<td>Sameer</td><td>34245</td><td>Delhi</td><td>32322322</td><td>EW@GMAIL.COM</td><td>2123</td><td>Dec  1 1999 12:00AM</td><td>12/27/2019</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Sohan</td><td>87687</td><td>GURGAON</td><td>43546782</td><td>EW@GMAIL.COM</td><td>27895</td><td>Dec 10 1997 12:00AM</td><td>12/27/2019</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Mohan</td><td>15678</td><td>GURGAON</td><td>78909878999</td><td>EW@GMAIL.COM</td><td>1678</td><td>Dec 10 1997 12:00AM</td><td>12/31/2019</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>
+		</tr><tr>
+			<td>Sagar</td><td>18904356</td><td>GURGAON</td><td>22221234567</td><td>EW@GMAIL.COM</td><td>679934</td><td>Dec  8 1999 12:00AM</td><td>12/31/2019</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>IDP</td><td>231231</td><td>GURGAON</td><td>43546782</td><td>EW@GMAIL.COM</td><td>1221</td><td>Dec  9 1998 12:00AM</td><td>12/27/2019</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Tuesday</td><td>47890234</td><td>GURGAON</td><td>43456782341</td><td>EW@GMAIL.COM</td><td>341678</td><td>Dec  9 1998 12:00AM</td><td>12/03/1998</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>January</td><td>2020</td><td>GURGAON</td><td>98098756787</td><td>jan@gmail.com</td><td>OkJn2020</td><td>01/08/1997</td><td>01/02/2020</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>Huyt</td><td>2589</td><td>GURGAON</td><td>564378</td><td>EW@GMAIL.COM</td><td>45697</td><td>01/08/1997</td><td>01/02/2020</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_AssetMaster">
+          <Key>
+            <PropertyRef Name="AssetId" />
+          </Key>
+          <Property Name="AssetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTypeId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Ram" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
+          <Property Name="WarrantyStatus" Type="datetime" />
+          <Property Name="WindowKey" Type="nvarchar" MaxLength="200" />
+          <Property Name="Model" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_AssetType">
+          <Key>
+            <PropertyRef Name="AssetTypeId" />
+          </Key>
+          <Property Name="AssetTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_AssetUserMaping">
+          <Key>
+            <PropertyRef Name="AssetUserMapplingid" />
+          </Key>
+          <Property Name="AssetUserMapplingid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Emailid" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserLocationid" Type="varchar" MaxLength="50" />
+          <Property Name="AssignDate" Type="datetime" Nullable="false" />
+          <Property Name="TransferDate" Type="datetime" Nullable="false" />
+          <Property Name="AssetLocationId" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="AssetsCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_LocationMaster">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserRegistration">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__tbl_Asset__Asset__2B3F6F97">
+          <End Role="tbl_AssetType" Type="Self.tbl_AssetType" Multiplicity="0..1" />
+          <End Role="tbl_AssetMaster" Type="Self.tbl_AssetMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AssetType">
+              <PropertyRef Name="AssetTypeId" />
+            </Principal>
+            <Dependent Role="tbl_AssetMaster">
+              <PropertyRef Name="AssetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Asset__Locat__2C3393D0">
+          <End Role="tbl_LocationMaster" Type="Self.tbl_LocationMaster" Multiplicity="0..1" />
+          <End Role="tbl_AssetMaster" Type="Self.tbl_AssetMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_LocationMaster">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="tbl_AssetMaster">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IMSModelStoreContainer">
+          <EntitySet Name="tbl_AssetMaster" EntityType="Self.tbl_AssetMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AssetType" EntityType="Self.tbl_AssetType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AssetUserMaping" EntityType="Self.tbl_AssetUserMaping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LocationMaster" EntityType="Self.tbl_LocationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserRegistration" EntityType="Self.tbl_UserRegistration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_Asset__Asset__2B3F6F97" Association="Self.FK__tbl_Asset__Asset__2B3F6F97">
+            <End Role="tbl_AssetType" EntitySet="tbl_AssetType" />
+            <End Role="tbl_AssetMaster" EntitySet="tbl_AssetMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Asset__Locat__2C3393D0" Association="Self.FK__tbl_Asset__Locat__2C3393D0">
+            <End Role="tbl_LocationMaster" EntitySet="tbl_LocationMaster" />
+            <End Role="tbl_AssetMaster" EntitySet="tbl_AssetMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_AssetMaster">
+          <Key>
+            <PropertyRef Name="AssetId" />
+          </Key>
+          <Property Name="AssetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTypeId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Ram" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WarrantyStatus" Type="DateTime" Precision="3" />
+          <Property Name="WindowKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AssetType" Relationship="Self.FK__tbl_Asset__Asset__2B3F6F97" FromRole="tbl_AssetMaster" ToRole="tbl_AssetType" />
+          <NavigationProperty Name="tbl_LocationMaster" Relationship="Self.FK__tbl_Asset__Locat__2C3393D0" FromRole="tbl_AssetMaster" ToRole="tbl_LocationMaster" />
+        </EntityType>
+        <EntityType Name="tbl_AssetType">
+          <Key>
+            <PropertyRef Name="AssetTypeId" />
+          </Key>
+          <Property Name="AssetTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AssetMaster" Relationship="Self.FK__tbl_Asset__Asset__2B3F6F97" FromRole="tbl_AssetType" ToRole="tbl_AssetMaster" />
+        </EntityType>
+        <EntityType Name="tbl_AssetUserMaping">
+          <Key>
+            <PropertyRef Name="AssetUserMapplingid" />
+          </Key>
+          <Property Name="AssetUserMapplingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserLocationid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssignDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransferDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AssetLocationId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="AssetsCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_LocationMaster">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AssetMaster" Relationship="Self.FK__tbl_Asset__Locat__2C3393D0" FromRole="tbl_LocationMaster" ToRole="tbl_AssetMaster" />
+        </EntityType>
+        <EntityType Name="tbl_UserRegistration">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__tbl_Asset__Asset__2B3F6F97">
+          <End Role="tbl_AssetType" Type="Self.tbl_AssetType" Multiplicity="0..1" />
+          <End Role="tbl_AssetMaster" Type="Self.tbl_AssetMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AssetType">
+              <PropertyRef Name="AssetTypeId" />
+            </Principal>
+            <Dependent Role="tbl_AssetMaster">
+              <PropertyRef Name="AssetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Asset__Locat__2C3393D0">
+          <End Role="tbl_LocationMaster" Type="Self.tbl_LocationMaster" Multiplicity="0..1" />
+          <End Role="tbl_AssetMaster" Type="Self.tbl_AssetMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_LocationMaster">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="tbl_AssetMaster">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_AssetMaster" EntityType="Self.tbl_AssetMaster" />
+          <EntitySet Name="tbl_AssetType" EntityType="Self.tbl_AssetType" />
+          <EntitySet Name="tbl_AssetUserMaping" EntityType="Self.tbl_AssetUserMaping" />
+          <EntitySet Name="tbl_LocationMaster" EntityType="Self.tbl_LocationMaster" />
+          <EntitySet Name="tbl_UserRegistration" EntityType="Self.tbl_UserRegistration" />
+          <AssociationSet Name="FK__tbl_Asset__Asset__2B3F6F97" Association="Self.FK__tbl_Asset__Asset__2B3F6F97">
+            <End Role="tbl_AssetType" EntitySet="tbl_AssetType" />
+            <End Role="tbl_AssetMaster" EntitySet="tbl_AssetMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Asset__Locat__2C3393D0" Association="Self.FK__tbl_Asset__Locat__2C3393D0">
+            <End Role="tbl_LocationMaster" EntitySet="tbl_LocationMaster" />
+            <End Role="tbl_AssetMaster" EntitySet="tbl_AssetMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMSModelStoreContainer" CdmEntityContainer="IMSEntities">
+          <EntitySetMapping Name="tbl_AssetMaster">
+            <EntityTypeMapping TypeName="IMSModel.tbl_AssetMaster">
+              <MappingFragment StoreEntitySet="tbl_AssetMaster">
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="AssetTypeId" ColumnName="AssetTypeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Ram" ColumnName="Ram" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyStatus" ColumnName="WarrantyStatus" />
+                <ScalarProperty Name="WindowKey" ColumnName="WindowKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AssetType">
+            <EntityTypeMapping TypeName="IMSModel.tbl_AssetType">
+              <MappingFragment StoreEntitySet="tbl_AssetType">
+                <ScalarProperty Name="AssetTypeId" ColumnName="AssetTypeId" />
+                <ScalarProperty Name="AssetTypeName" ColumnName="AssetTypeName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AssetUserMaping">
+            <EntityTypeMapping TypeName="IMSModel.tbl_AssetUserMaping">
+              <MappingFragment StoreEntitySet="tbl_AssetUserMaping">
+                <ScalarProperty Name="AssetUserMapplingid" ColumnName="AssetUserMapplingid" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="UserLocationid" ColumnName="UserLocationid" />
+                <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+                <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+                <ScalarProperty Name="AssetLocationId" ColumnName="AssetLocationId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="AssetsCode" ColumnName="AssetsCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LocationMaster">
+            <EntityTypeMapping TypeName="IMSModel.tbl_LocationMaster">
+              <MappingFragment StoreEntitySet="tbl_LocationMaster">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserRegistration">
+            <EntityTypeMapping TypeName="IMSModel.tbl_UserRegistration">
+              <MappingFragment StoreEntitySet="tbl_UserRegistration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
